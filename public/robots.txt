@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yendoh-derek.github.io/sitemap.xml
