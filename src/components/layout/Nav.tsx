@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { navLinks, site, sectionIds } from "@/content/site";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { cn, lockBodyScroll, scrollToSection, unlockBodyScroll } from "@/lib/utils";
@@ -9,6 +9,9 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const activeSection = useScrollSpy(sectionIds);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const firstMenuLinkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -22,8 +25,44 @@ export function Nav() {
 
     lockBodyScroll();
 
+    // Auto-focus first menu link when menu opens
+    setTimeout(() => {
+      firstMenuLinkRef.current?.focus();
+    }, 0);
+
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMenuOpen(false);
+      if (e.key === "Escape") {
+        setMenuOpen(false);
+        hamburgerRef.current?.focus();
+        return;
+      }
+
+      // Trap focus within menu
+      if (e.key === "Tab" && menuRef.current) {
+        const focusableElements = menuRef.current.querySelectorAll(
+          "a[href], button:not([hidden])"
+        );
+        const focusableArray = Array.from(focusableElements);
+        const currentIndex = focusableArray.indexOf(
+          document.activeElement as Element
+        );
+        const isShiftKey = e.shiftKey;
+
+        if (isShiftKey) {
+          // Shift+Tab
+          if (currentIndex === 0) {
+            e.preventDefault();
+            const lastElement = focusableArray[focusableArray.length - 1];
+            (lastElement as HTMLElement).focus();
+          }
+        } else {
+          // Tab
+          if (currentIndex === focusableArray.length - 1) {
+            e.preventDefault();
+            (focusableArray[0] as HTMLElement).focus();
+          }
+        }
+      }
     };
 
     window.addEventListener("keydown", onKeyDown);
@@ -37,6 +76,7 @@ export function Nav() {
     const id = href.replace("#", "");
     scrollToSection(id);
     setMenuOpen(false);
+    hamburgerRef.current?.focus();
   };
 
   const navLinkClass = (href: string) => {
@@ -94,6 +134,7 @@ export function Nav() {
         </ul>
 
         <button
+          ref={hamburgerRef}
           type="button"
           className="flex h-11 w-11 items-center justify-center md:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -126,14 +167,16 @@ export function Nav() {
 
       {menuOpen && (
         <div
-          className="fixed inset-0 top-16 z-30 bg-base/95 backdrop-blur-md md:hidden"
+          ref={menuRef}
+          className="fixed inset-0 top-16 z-50 bg-base/95 backdrop-blur-md md:hidden"
           role="dialog"
           aria-modal="true"
         >
           <ul className="flex flex-col gap-6 p-8">
-            {navLinks.map((link) => (
+            {navLinks.map((link, index) => (
               <li key={link.href}>
                 <a
+                  ref={index === 0 ? firstMenuLinkRef : null}
                   href={link.href}
                   onClick={(e) => {
                     e.preventDefault();
