@@ -149,12 +149,41 @@
     border-radius: var(--radius-badge);
     padding: 6px 12px;
     transition: all 180ms ease;
+    cursor: pointer;
+    display: block;
+    text-align: left;
   }
 
   .skill-badge:hover {
     border-color: rgba(0, 229, 255, 0.45);
     color: var(--accent-cyan);
     box-shadow: 0 0 10px rgba(0, 229, 255, 0.12);
+  }
+
+  .skill-description {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    animation: slideDown 200ms var(--ease-smooth) forwards;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skill-description {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 
   .btn-primary {
