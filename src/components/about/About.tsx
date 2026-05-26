@@ -14,9 +14,15 @@ export function About() {
           <SectionHeading title="About" />
         </Reveal>
 
-        <div className="grid grid-cols-1 gap-8 md:gap-12 md:grid-cols-3 items-start">
-          {/* Text Content - Left Column */}
-          <div className="md:col-span-2">
+        {/* Mobile Image - shows at top on mobile, hidden on desktop */}
+        <div className="md:hidden mb-8 flex justify-center">
+          <AboutImage />
+        </div>
+
+        {/* Desktop Layout: 60/40 split with sticky image */}
+        <div className="grid grid-cols-1 gap-8 md:gap-12 md:grid-cols-5 items-start">
+          {/* Text Content - 60% (3 out of 5 columns) */}
+          <div className="md:col-span-3">
             <Reveal>
               <div className="space-y-6 text-secondary">
                 {aboutParagraphs.map((para, i) => (
@@ -56,8 +62,8 @@ export function About() {
             </Reveal>
           </div>
 
-          {/* Image - Right Column */}
-          <div className="md:col-span-1 flex justify-center md:justify-end md:sticky md:top-24">
+          {/* Image - 40% (2 out of 5 columns) - Sticky on desktop */}
+          <div className="hidden md:flex md:col-span-2 justify-center md:justify-end md:sticky md:top-24">
             <AboutImage />
           </div>
         </div>
