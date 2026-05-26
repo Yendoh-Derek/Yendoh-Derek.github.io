@@ -1,8 +1,10 @@
 export const aboutParagraphs = [
-  "I'm a software engineer and machine learning practitioner from Accra, Ghana. My work sits at the intersection of AI research and real-world systems — building tools that don't just predict, but actually help people make decisions.",
-  "My most significant project to date is DiaTrack, a clinical decision support system for Type 2 Diabetes risk prediction. I built it end-to-end: the ML pipeline, the FastAPI backend, the clinician dashboard, and the patient-facing mobile app. It's the kind of problem that doesn't fit neatly into a Kaggle competition — it required thinking about doctors, patients, data privacy, and deployment all at once.",
-  "I'm especially interested in AI applications in healthcare and education — domains where the gap between what's technically possible and what's actually deployed is still very wide. I want to help close that gap.",
+  "I’m Derek Yendoh, an AI/ML engineer and early-stage entrepreneur from Ghana focused on building practical AI systems for healthcare and education. My work sits at the intersection of software engineering, machine learning, and real-world problem solving across African contexts.",
+  "Over the past few years, I’ve worked on AI voice agents, RAG systems, backend infrastructure, and intelligent applications using tools like FastAPI, Python, LLMs, and modern AI frameworks. I currently work as an AI/ML Engineer at 4th IR and contribute to open-source AI initiatives with Ghana NLP.",
+  "Beyond engineering, I’ve spent years experimenting with startup ideas, failing, rebuilding, and learning how difficult it is to turn strong technical ideas into scalable products. That process shaped how I think about execution, ownership, and building for real constraints rather than ideal assumptions.",
+  "Outside tech, I enjoy mixing sound at church — from live sound engineering to post-production editing and podcast cleanup. Audio engineering taught me a lot about systems thinking, precision, and working calmly under pressure.",
+  "I’m currently interested in AI infrastructure, intelligent healthcare systems, AI agents, edge AI, and products that improve access across underserved communities.",
 ];
 
 export const pullQuote =
-  "The gap between what AI can do and what actually helps people — that's where I want to work.";
+  "I build for real constraints, not ideal assumptions.";
