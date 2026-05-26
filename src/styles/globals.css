@@ -291,6 +291,29 @@
   }
 }
 
+/* About section image halo animation */
+@keyframes halo {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.05);
+  }
+}
+
+.animate-halo {
+  animation: halo 4s var(--ease-smooth) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-halo {
+    animation: none;
+    opacity: 0.3;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-name,
   .hero-title,
