@@ -31,15 +31,8 @@ export function AboutImage() {
         {/* Soft background shadow layer - creates depth and floating effect */}
         <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-cyan/5 via-transparent to-cyan/5 blur-2xl -z-10 opacity-60 md:-inset-8" />
 
-        {/* Animated gradient halo - using box-shadow for glow */}
-        <div
-          className="pointer-events-none absolute -inset-6 rounded-3xl animate-halo md:-inset-8"
-          style={{
-            background:
-              "radial-gradient(circle at 30% 30%, rgba(0, 229, 255, 0.4), rgba(0, 229, 255, 0.1) 40%, transparent)",
-            filter: "blur(24px)",
-          }}
-        />
+        {/* Animated gradient halo */}
+        <div className="pointer-events-none absolute -inset-3 rounded-3xl bg-gradient-to-br from-cyan/20 via-cyan/10 to-transparent blur-3xl animate-halo md:-inset-4" />
 
         {/* Image container with enhanced shadow and hover effect */}
         <motion.div
