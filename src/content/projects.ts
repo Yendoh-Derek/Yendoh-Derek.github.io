@@ -81,20 +81,26 @@ export const projects: Project[] = [
   {
     id: "ml-model-cards",
     domains: ["ML Research", "Open Source"],
-    title: "Reinforcement Learning Model Recommendation from Hugging face catalog",
+    title:
+      "Reinforcement Learning Model Recommendation from Hugging face catalog",
     plainSummary:
       "A pipeline that automatically enriches AI model documentation from the HuggingFace Hub — making models easier to discover and evaluate.",
     technicalSummary:
       "Python pipeline using the HuggingFace API for metadata extraction, feature engineering (binning, ratios, risk flags), and parquet-based storage.",
-    stack: ["Python", "HuggingFace", "Pandas", "Feature Engineering", "Jupyter"],
+    stack: [
+      "Python",
+      "HuggingFace",
+      "Pandas",
+      "Feature Engineering",
+      "Jupyter",
+    ],
     links: [
       {
         label: "GitHub",
-        href: "https://github.com/Yendoh-Derek/Machine-learning",
+        href: "https://github.com/Yendoh-Derek/LLM-Recommender-System.git",
       },
     ],
-    contextNote:
-      "Built during Pyclub Mentorship Program — a peer ML learning community.",
+    contextNote: "A model recommendations system using Reinforcement Learning",
     sections: [
       {
         title: "The Problem",
@@ -106,7 +112,7 @@ export const projects: Project[] = [
       },
       {
         title: "Context",
-        body: "Developed as part of the Pyclub Mentorship Program — contributing to a peer ML learning community focused on practical Python and machine learning skills.",
+        body: "Buit using the Soft Actor Critic (SAC) algorithm, the system learns to recommend models based on user interactions and feedback, optimizing for relevance and diversity in recommendations over time.",
       },
     ],
   },
@@ -118,7 +124,13 @@ export const projects: Project[] = [
       "A production-grade framework for teams — shared standards, reusable templates, and department-specific prompt libraries for consistent AI workflows.",
     technicalSummary:
       "CRISP prompt model, technique templates (CoT, few-shot, RAG), evaluation rubrics, and governed contribution workflow across customer service, HR, finance, marketing, and engineering.",
-    stack: ["Markdown", "Prompt Design", "AI Governance", "RAG", "Chain-of-Thought"],
+    stack: [
+      "Markdown",
+      "Prompt Design",
+      "AI Governance",
+      "RAG",
+      "Chain-of-Thought",
+    ],
     links: [
       {
         label: "GitHub",
