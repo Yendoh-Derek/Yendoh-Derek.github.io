@@ -10,17 +10,26 @@ import {
 import { useRef, useState } from "react";
 import { Reveal } from "@/components/ui/Reveal";
 
-export function AboutImage() {
+interface AboutImageProps {
+  isSticky?: boolean;
+}
+
+export function AboutImage({ isSticky = false }: AboutImageProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isHovering, setIsHovering] = useState(false);
   const shouldReduceMotion = useReducedMotion();
+
+  // Always call hook (rules of hooks), but only use when not sticky
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
   });
 
-  // Subtle local parallax to avoid overlap on small and large screens.
-  const y = useTransform(scrollYProgress, [0, 1], [10, -18]);
+  // Subtle local parallax - only transform when not sticky and not reduced motion
+  const y =
+    !isSticky && !shouldReduceMotion
+      ? useTransform(scrollYProgress, [0, 1], [10, -18])
+      : 0;
 
   // Glow shadow opacity - 0.2 base, 0.4 on hover
   const glowOpacity = isHovering ? 0.4 : 0.2;
@@ -30,8 +39,10 @@ export function AboutImage() {
     <Reveal>
       <motion.div
         ref={containerRef}
-        className="relative mx-auto w-full max-w-[300px] sm:max-w-[340px] md:max-w-[360px] lg:max-w-[390px] will-change-transform"
-        style={shouldReduceMotion ? undefined : { y }}
+        className={`relative mx-auto w-full max-w-[300px] sm:max-w-[340px] md:max-w-[360px] lg:max-w-[390px] ${
+          isSticky ? "md:sticky md:top-[10%] md:z-10" : ""
+        } ${isSticky ? "" : "will-change-transform"}`}
+        style={shouldReduceMotion || isSticky ? undefined : { y }}
       >
         {/* Subtle soft drop shadow layer - creates depth and floating effect */}
         <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-black/20 via-transparent to-black/20 blur-2xl -z-10 opacity-40 md:-inset-8" />
@@ -45,7 +56,7 @@ export function AboutImage() {
 
         {/* Image container with cyan glow shadow */}
         <motion.div
-          className="relative overflow-hidden rounded-2xl border border-border-light/70 bg-surface/60 cursor-pointer"
+          className="relative overflow-hidden rounded-2xl border border-border-light/70 bg-surface/60 cursor-pointer flex flex-col"
           onHoverStart={() => !shouldReduceMotion && setIsHovering(true)}
           onHoverEnd={() => setIsHovering(false)}
           onMouseDown={() => !shouldReduceMotion && setIsHovering(true)}

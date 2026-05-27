@@ -8,7 +8,7 @@ import { AboutImage } from "./AboutImage";
 
 export function About() {
   return (
-    <section id="about" className="section-pad bg-surface">
+    <section id="about" className="section-pad bg-surface overflow-visible">
       <div className="section-container">
         <Reveal>
           <SectionHeading title="About" />
@@ -20,9 +20,9 @@ export function About() {
         </div>
 
         {/* Desktop Layout: 60/40 split with sticky image */}
-        <div className="grid grid-cols-1 gap-8 md:gap-12 md:grid-cols-5 items-start">
+        <div className="grid grid-cols-1 gap-8 md:gap-12 md:grid-cols-5 items-start relative md:min-h-96 overflow-visible">
           {/* Text Content - 60% (3 out of 5 columns) */}
-          <div className="md:col-span-3">
+          <div className="md:col-span-3 flex flex-col justify-start">
             <Reveal>
               <div className="space-y-6 text-secondary">
                 {aboutParagraphs.map((para, i) => (
@@ -63,7 +63,7 @@ export function About() {
           </div>
 
           {/* Image - 40% (2 out of 5 columns) - Sticky on desktop */}
-          <div className="hidden md:flex md:col-span-2 justify-center md:justify-end">
+          <div className="hidden md:flex md:col-span-2 justify-end">
             <AboutImage isSticky={true} />
           </div>
         </div>
