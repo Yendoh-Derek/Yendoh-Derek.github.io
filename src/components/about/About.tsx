@@ -63,8 +63,8 @@ export function About() {
           </div>
 
           {/* Image - 40% (2 out of 5 columns) - Sticky on desktop */}
-          <div className="hidden md:flex md:col-span-2 justify-center md:justify-end md:sticky md:top-24">
-            <AboutImage />
+          <div className="hidden md:flex md:col-span-2 justify-center md:justify-end">
+            <AboutImage isSticky={true} />
           </div>
         </div>
       </div>

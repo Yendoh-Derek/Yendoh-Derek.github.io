@@ -7,11 +7,12 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Reveal } from "@/components/ui/Reveal";
 
 export function AboutImage() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isHovering, setIsHovering] = useState(false);
   const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -21,6 +22,10 @@ export function AboutImage() {
   // Subtle local parallax to avoid overlap on small and large screens.
   const y = useTransform(scrollYProgress, [0, 1], [10, -18]);
 
+  // Glow shadow opacity - 0.2 base, 0.4 on hover
+  const glowOpacity = isHovering ? 0.4 : 0.2;
+  const shadowOpacity = isHovering ? 0.24 : 0.08;
+
   return (
     <Reveal>
       <motion.div
@@ -28,15 +33,26 @@ export function AboutImage() {
         className="relative mx-auto w-full max-w-[300px] sm:max-w-[340px] md:max-w-[360px] lg:max-w-[390px] will-change-transform"
         style={shouldReduceMotion ? undefined : { y }}
       >
-        {/* Soft background shadow layer - creates depth and floating effect */}
-        <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-cyan/5 via-transparent to-cyan/5 blur-2xl -z-10 opacity-60 md:-inset-8" />
+        {/* Subtle soft drop shadow layer - creates depth and floating effect */}
+        <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-black/20 via-transparent to-black/20 blur-2xl -z-10 opacity-40 md:-inset-8" />
 
-        {/* Animated gradient halo */}
-        <div className="pointer-events-none absolute -inset-3 rounded-3xl bg-gradient-to-br from-cyan/20 via-cyan/10 to-transparent blur-3xl animate-halo md:-inset-4" />
-
-        {/* Image container with enhanced shadow and hover effect */}
+        {/* Animated glow halo - pulsing cyan effect like project cards */}
         <motion.div
-          className="relative overflow-hidden rounded-2xl border border-border-light/70 bg-surface/60 shadow-[0_8px_32px_rgba(0,0,0,0.25),0_32px_64px_rgba(0,0,0,0.2)]"
+          className="pointer-events-none absolute -inset-3 rounded-3xl bg-gradient-to-br from-cyan/20 via-cyan/10 to-transparent blur-2xl md:-inset-4 animate-halo"
+          animate={{ opacity: glowOpacity }}
+          transition={{ duration: 0.3 }}
+        />
+
+        {/* Image container with cyan glow shadow */}
+        <motion.div
+          className="relative overflow-hidden rounded-2xl border border-border-light/70 bg-surface/60 cursor-pointer"
+          onHoverStart={() => !shouldReduceMotion && setIsHovering(true)}
+          onHoverEnd={() => setIsHovering(false)}
+          onMouseDown={() => !shouldReduceMotion && setIsHovering(true)}
+          onMouseUp={() => setIsHovering(false)}
+          animate={{
+            boxShadow: `0 12px 40px rgba(0, 229, 255, ${shadowOpacity}), 0 0 30px rgba(0, 229, 255, ${glowOpacity})`,
+          }}
           whileHover={shouldReduceMotion ? undefined : { scale: 1.02, y: -2 }}
           transition={{ type: "spring", stiffness: 260, damping: 24 }}
         >
@@ -48,6 +64,7 @@ export function AboutImage() {
             sizes="(max-width: 640px) 78vw, (max-width: 1024px) 35vw, 390px"
             className="h-auto w-full object-cover"
             priority
+            draggable={false}
           />
         </motion.div>
       </motion.div>
