@@ -1,7 +1,6 @@
 export const site = {
   name: "Derek Yendoh",
   title: "AI/ML Software Engineer",
-  tagline: "HealthTech · EdTech · MLOps",
   pitch:
     "I build AI systems that work in the real world — from model training to clinical deployment.",
   location: "Accra, Ghana",
@@ -17,17 +16,16 @@ export const site = {
 export const navLinks = [
   { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
-  { href: "#skills", label: "Skills" },
+  { href: "#experience", label: "Experience" },
   { href: "#contact", label: "Contact" },
 ] as const;
 
-export type SectionId = "hero" | "about" | "projects" | "skills" | "experience" | "contact";
+export type SectionId = "hero" | "about" | "projects" | "experience" | "contact";
 
 export const sectionIds: SectionId[] = [
   "hero",
   "about",
   "projects",
-  "skills",
   "experience",
   "contact",
 ];

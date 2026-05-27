@@ -9,7 +9,7 @@ export function ParticleBackground() {
   const prefersReduced = useMediaQuery("(prefers-reduced-motion: reduce)");
 
   useEffect(() => {
-    if (isMobile || prefersReduced) return;
+    if (prefersReduced) return;
 
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -19,8 +19,8 @@ export function ParticleBackground() {
 
     let animationId: number;
     const nodes: { x: number; y: number; vx: number; vy: number }[] = [];
-    const nodeCount = 40;
-    const connectionDistance = 120;
+    const nodeCount = isMobile ? 14 : 50;
+    const connectionDistance = isMobile ? 70 : 130;
 
     const resize = () => {
       const dpr = window.devicePixelRatio || 1;
@@ -39,12 +39,15 @@ export function ParticleBackground() {
     resize();
     window.addEventListener("resize", resize);
 
+    const w0 = canvas.offsetWidth || 800;
+    const h0 = canvas.offsetHeight || 600;
+
     for (let i = 0; i < nodeCount; i++) {
       nodes.push({
-        x: Math.random() * canvas.offsetWidth,
-        y: Math.random() * canvas.offsetHeight,
-        vx: (Math.random() - 0.5) * 0.15,
-        vy: (Math.random() - 0.5) * 0.15,
+        x: Math.random() * w0,
+        y: Math.random() * h0,
+        vx: (Math.random() - 0.5) * 0.08,
+        vy: (Math.random() - 0.5) * 0.08,
       });
     }
 
@@ -60,8 +63,8 @@ export function ParticleBackground() {
         if (node.y < 0 || node.y > h) node.vy *= -1;
 
         ctx.beginPath();
-        ctx.arc(node.x, node.y, 1.5, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(0, 229, 255, 0.15)";
+        ctx.arc(node.x, node.y, isMobile ? 2 : 3.2, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(0, 229, 255, 0.12)";
         ctx.fill();
       });
 
@@ -71,11 +74,12 @@ export function ParticleBackground() {
           const dy = nodes[i].y - nodes[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < connectionDistance) {
+            const alpha = 0.08 * (1 - dist / connectionDistance);
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.strokeStyle = `rgba(0, 229, 255, ${0.06 * (1 - dist / connectionDistance)})`;
-            ctx.lineWidth = 0.5;
+            ctx.strokeStyle = `rgba(0, 229, 255, ${alpha})`;
+            ctx.lineWidth = 0.6;
             ctx.stroke();
           }
         }
@@ -84,24 +88,21 @@ export function ParticleBackground() {
       animationId = requestAnimationFrame(draw);
     };
 
-    const fadeIn = setTimeout(() => {
-      canvas.style.opacity = "1";
-      draw();
-    }, 900);
+    canvas.style.opacity = "1";
+    draw();
 
     return () => {
       cancelAnimationFrame(animationId);
-      clearTimeout(fadeIn);
       window.removeEventListener("resize", resize);
     };
   }, [isMobile, prefersReduced]);
 
-  if (isMobile || prefersReduced) return null;
+  if (prefersReduced) return null;
 
   return (
     <canvas
       ref={canvasRef}
-      className="pointer-events-none absolute inset-0 h-full w-full opacity-0 transition-opacity duration-[1200ms]"
+      className="pointer-events-none absolute inset-0 z-[1] h-full w-full opacity-100"
       aria-hidden
     />
   );

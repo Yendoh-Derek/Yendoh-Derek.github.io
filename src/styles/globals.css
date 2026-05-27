@@ -254,16 +254,12 @@
   animation: fadeUp 550ms var(--ease-smooth) 200ms both;
 }
 
-.hero-tags {
-  animation: fadeUp 550ms var(--ease-smooth) 350ms both;
-}
-
-.hero-pitch {
-  animation: fadeUp 550ms var(--ease-smooth) 420ms both;
-}
-
 .hero-ctas {
   animation: fadeUp 550ms var(--ease-smooth) 500ms both;
+}
+
+.hero-marquee {
+  animation: fadeUp 550ms var(--ease-smooth) 560ms both;
 }
 
 .nav-fade-in {
@@ -273,9 +269,8 @@
 @media (max-width: 767px) {
   .hero-name,
   .hero-title,
-  .hero-tags,
-  .hero-pitch,
-  .hero-ctas {
+  .hero-ctas,
+  .hero-marquee {
     animation-name: fadeUpMobile;
   }
 
@@ -307,6 +302,40 @@
   animation: halo 4s var(--ease-smooth) infinite;
 }
 
+/* Supabase-style marquee */
+.marquee-track {
+  animation: marquee var(--marquee-duration, 32s) linear infinite;
+  animation-direction: var(--marquee-direction, normal);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    gap: 0.75rem 1.5rem;
+  }
+
+  .marquee {
+    overflow: visible;
+  }
+
+  .marquee > div[class*="gradient"] {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-halo {
     animation: none;
@@ -317,9 +346,8 @@
 @media (prefers-reduced-motion: reduce) {
   .hero-name,
   .hero-title,
-  .hero-tags,
-  .hero-pitch,
   .hero-ctas,
+  .hero-marquee,
   .nav-fade-in {
     animation: none;
     opacity: 1;

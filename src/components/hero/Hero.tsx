@@ -1,14 +1,16 @@
 "use client";
 
+import { skillsMarqueeItems } from "@/content/marquee";
 import { site } from "@/content/site";
 import { scrollToSection } from "@/lib/utils";
+import { Marquee } from "@/components/marquee/Marquee";
 import { ParticleBackground } from "./ParticleBackground";
 
 export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center overflow-hidden pt-16"
+      className="relative flex min-h-screen items-center overflow-hidden bg-base pt-16"
     >
       <ParticleBackground />
 
@@ -23,12 +25,6 @@ export function Hero() {
           >
             {site.title}
           </h1>
-          <p className="hero-tags mt-4 font-mono text-sm text-secondary">
-            {site.tagline}
-          </p>
-          <p className="hero-pitch mt-6 max-w-lg text-secondary">
-            {site.pitch}
-          </p>
           <div className="hero-ctas mt-10 flex flex-wrap gap-4">
             <button
               type="button"
@@ -45,6 +41,9 @@ export function Hero() {
             >
               GitHub ↗
             </a>
+          </div>
+          <div className="hero-marquee relative z-10 mt-10 w-full">
+            <Marquee items={skillsMarqueeItems} speedSeconds={78} />
           </div>
         </div>
       </div>

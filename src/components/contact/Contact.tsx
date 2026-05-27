@@ -1,7 +1,9 @@
 "use client";
 
+import { skillsMarqueeItems } from "@/content/marquee";
 import { site } from "@/content/site";
 import { CopyButton } from "@/components/ui/CopyButton";
+import { Marquee } from "@/components/marquee/Marquee";
 import { Reveal } from "@/components/ui/Reveal";
 
 export function Contact() {
@@ -38,6 +40,10 @@ export function Contact() {
             >
               LinkedIn ↗
             </a>
+          </div>
+
+          <div className="relative z-10 mt-12 w-full text-left">
+            <Marquee items={skillsMarqueeItems} speedSeconds={78} />
           </div>
         </Reveal>
       </div>

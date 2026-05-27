@@ -168,7 +168,7 @@ export function Nav() {
       {menuOpen && (
         <div
           ref={menuRef}
-          className="fixed inset-0 top-16 z-50 bg-base/95 backdrop-blur-md md:hidden"
+          className="fixed left-0 right-0 top-16 z-[200] bg-base opacity-100 md:hidden"
           role="dialog"
           aria-modal="true"
         >

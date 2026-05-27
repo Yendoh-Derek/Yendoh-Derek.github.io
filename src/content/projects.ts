@@ -81,7 +81,7 @@ export const projects: Project[] = [
   {
     id: "ml-model-cards",
     domains: ["ML Research", "Open Source"],
-    title: "HuggingFace Model Card Feature Engineering",
+    title: "Reinforcement Learning Model Recommendation from Hugging face catalog",
     plainSummary:
       "A pipeline that automatically enriches AI model documentation from the HuggingFace Hub — making models easier to discover and evaluate.",
     technicalSummary:
