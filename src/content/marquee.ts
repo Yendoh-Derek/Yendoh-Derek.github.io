@@ -1,0 +1,18 @@
+export const skillsMarqueeItems = [
+  "AI/ML Engineering",
+  "LLM Applications",
+  "Retrieval-Augmented Generation (RAG)",
+  "AI Agents & Agentic Workflows",
+  "FastAPI & Backend Systems",
+  "Cloud & Deployment Workflows",
+  "Healthcare AI",
+  "AI for Education",
+  "Preventive Health Systems",
+  "African Language AI",
+  "AI Infrastructure",
+  "Open Source AI",
+  "Voice AI Engineering",
+  "Edge AI Systems",
+  "Multi-Agent Systems",
+  "Conversational AI",
+] as const;
