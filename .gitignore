@@ -30,9 +30,7 @@ yarn-error.log*
 # env files
 .env*
 .plan
-
-SKILL.md
-plan.md
+.SKILL
 
 # typescript
 *.tsbuildinfo

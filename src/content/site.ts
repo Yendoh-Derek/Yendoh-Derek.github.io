@@ -5,8 +5,7 @@ export const site = {
     "I build AI systems that work in the real world — from model training to clinical deployment.",
   location: "Accra, Ghana",
   email: "yendohderek@gmail.com",
-  degree:
-    "BSc Biomedical Engineering — [Kwame Nkrumah University of Science and Technology](https://www.kust.edu.gh)",
+  degree: "BSc Computer Science — [Your Institution]",
   github: "https://github.com/Yendoh-Derek",
   linkedin: "https://www.linkedin.com/in/derek-yendoh-4a6174275",
   metaDescription:
@@ -21,12 +20,7 @@ export const navLinks = [
   { href: "#contact", label: "Contact" },
 ] as const;
 
-export type SectionId =
-  | "hero"
-  | "about"
-  | "projects"
-  | "experience"
-  | "contact";
+export type SectionId = "hero" | "about" | "projects" | "experience" | "contact";
 
 export const sectionIds: SectionId[] = [
   "hero",
