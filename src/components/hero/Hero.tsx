@@ -10,11 +10,11 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center overflow-hidden bg-base pt-16"
+      className="relative flex min-h-screen items-start overflow-hidden bg-base pt-12 sm:items-center sm:pt-16"
     >
       <ParticleBackground />
 
-      <div className="section-container relative z-10 w-full max-w-3xl py-16">
+      <div className="section-container relative z-10 w-full max-w-3xl py-8 sm:py-16">
         <div>
           <p className="hero-name font-display text-sm font-bold uppercase tracking-widest text-cyan">
             {site.name}
