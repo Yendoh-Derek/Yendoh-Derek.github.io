@@ -8,6 +8,8 @@ export const site = {
   degree: "BSc Computer Science — [Your Institution]",
   github: "https://github.com/Yendoh-Derek",
   linkedin: "https://www.linkedin.com/in/derek-yendoh-4a6174275",
+  instagram: "https://www.instagram.com/yendoh_derek?utm_source=qr&igsh=MTdxamV3c3V5NnAyNQ==",
+  x: "https://x.com/DYendoh77058",
   metaDescription:
     "Derek Yendoh — AI/ML Software Engineer from Accra, Ghana. Building intelligent systems for HealthTech and EdTech.",
   url: "https://yendoh-derek.github.io",

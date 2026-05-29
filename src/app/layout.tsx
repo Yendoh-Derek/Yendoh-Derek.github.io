@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, JetBrains_Mono, Syne } from "next/font/google";
 import { Nav } from "@/components/layout/Nav";
+import { Footer } from "@/components/layout/Footer";
 import { site } from "@/content/site";
 import "@/styles/globals.css";
 
@@ -70,12 +71,7 @@ export default function RootLayout({
         <div className="grain-overlay" aria-hidden />
         <Nav />
         <main>{children}</main>
-        <footer className="border-t border-border py-8">
-          <div className="section-container flex flex-col items-center justify-between gap-4 text-sm text-secondary md:flex-row">
-            <p>© {new Date().getFullYear()} {site.name}.</p>
-            <p className="font-mono text-xs">{site.location}</p>
-          </div>
-        </footer>
+        <Footer />
       </body>
     </html>
   );
