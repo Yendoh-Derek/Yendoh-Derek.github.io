@@ -187,10 +187,12 @@
   }
 
   .btn-primary {
-    @apply inline-flex min-h-[44px] items-center justify-center rounded-badge px-6 py-3 font-medium;
+    @apply inline-flex h-[44px] items-center justify-center rounded-badge px-6 font-medium;
     background: var(--accent-cyan);
     color: var(--bg-base);
-    transition: opacity 200ms ease, transform 200ms var(--ease-smooth);
+    transition:
+      opacity 200ms ease,
+      transform 200ms var(--ease-smooth);
   }
 
   .btn-primary:hover {
@@ -198,7 +200,7 @@
   }
 
   .btn-secondary {
-    @apply inline-flex min-h-[44px] items-center justify-center rounded-badge border px-6 py-3 font-medium;
+    @apply inline-flex h-[44px] items-center justify-center rounded-badge border px-6 font-medium;
     border-color: var(--border-light);
     color: var(--text-primary);
     transition:
@@ -288,7 +290,8 @@
 
 /* About section image halo animation */
 @keyframes halo {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.6;
     transform: scale(1);
   }
@@ -354,4 +357,3 @@
     transform: none;
   }
 }
-

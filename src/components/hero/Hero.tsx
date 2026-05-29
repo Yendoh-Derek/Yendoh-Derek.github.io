@@ -25,6 +25,9 @@ export function Hero() {
           >
             {site.title}
           </h1>
+          <p className="mt-6 font-body text-base font-medium tracking-wide text-secondary">
+            {site.tagline}
+          </p>
           <div className="hero-ctas mt-10 flex flex-wrap gap-4">
             <button
               type="button"

@@ -3,7 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import { navLinks, site, sectionIds } from "@/content/site";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
-import { cn, lockBodyScroll, scrollToSection, unlockBodyScroll } from "@/lib/utils";
+import {
+  cn,
+  lockBodyScroll,
+  scrollToSection,
+  unlockBodyScroll,
+} from "@/lib/utils";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -40,11 +45,11 @@ export function Nav() {
       // Trap focus within menu
       if (e.key === "Tab" && menuRef.current) {
         const focusableElements = menuRef.current.querySelectorAll(
-          "a[href], button:not([hidden])"
+          "a[href], button:not([hidden])",
         );
         const focusableArray = Array.from(focusableElements);
         const currentIndex = focusableArray.indexOf(
-          document.activeElement as Element
+          document.activeElement as Element,
         );
         const isShiftKey = e.shiftKey;
 
@@ -84,7 +89,9 @@ export function Nav() {
     const isActive = activeSection === id;
     return cn(
       "relative py-1 text-sm transition-opacity duration-200",
-      isActive ? "text-primary opacity-100" : "text-secondary opacity-60 hover:opacity-100",
+      isActive
+        ? "text-primary opacity-100"
+        : "text-secondary opacity-60 hover:opacity-100",
     );
   };
 
@@ -96,7 +103,7 @@ export function Nav() {
       )}
     >
       <nav
-        className="section-container flex h-full items-center justify-between"
+        className="section-container flex h-full items-center justify-between pr-8 md:pr-12"
         aria-label="Main navigation"
       >
         <a

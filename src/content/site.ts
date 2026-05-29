@@ -1,6 +1,7 @@
 export const site = {
   name: "Derek Yendoh",
   title: "AI/ML Software Engineer",
+  tagline: "Early Stage Technical Founder",
   pitch:
     "I build AI systems that work in the real world — from model training to clinical deployment.",
   location: "Accra, Ghana",
@@ -8,7 +9,8 @@ export const site = {
   degree: "BSc Computer Science — [Your Institution]",
   github: "https://github.com/Yendoh-Derek",
   linkedin: "https://www.linkedin.com/in/derek-yendoh-4a6174275",
-  instagram: "https://www.instagram.com/yendoh_derek?utm_source=qr&igsh=MTdxamV3c3V5NnAyNQ==",
+  instagram:
+    "https://www.instagram.com/yendoh_derek?utm_source=qr&igsh=MTdxamV3c3V5NnAyNQ==",
   x: "https://x.com/DYendoh77058",
   metaDescription:
     "Derek Yendoh — AI/ML Software Engineer from Accra, Ghana. Building intelligent systems for HealthTech and EdTech.",
@@ -22,7 +24,12 @@ export const navLinks = [
   { href: "#contact", label: "Contact" },
 ] as const;
 
-export type SectionId = "hero" | "about" | "projects" | "experience" | "contact";
+export type SectionId =
+  | "hero"
+  | "about"
+  | "projects"
+  | "experience"
+  | "contact";
 
 export const sectionIds: SectionId[] = [
   "hero",

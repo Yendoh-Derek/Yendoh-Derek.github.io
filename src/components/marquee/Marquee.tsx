@@ -35,7 +35,7 @@ export function Marquee({
           <span
             // eslint-disable-next-line react/no-array-index-key
             key={`${label}-${idx}`}
-            className="marquee-chip whitespace-nowrap font-display text-base font-bold tracking-wide text-primary md:text-lg"
+            className="marquee-chip whitespace-nowrap font-display text-base font-bold tracking-wide text-primary opacity-90 md:text-lg md:opacity-100"
           >
             {label}
           </span>
@@ -43,11 +43,11 @@ export function Marquee({
       </div>
 
       <div
-        className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-base via-base/80 to-transparent md:w-24"
+        className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-base to-transparent md:w-24"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-base via-base/80 to-transparent md:w-24"
+        className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-base to-transparent md:w-24"
         aria-hidden
       />
     </div>
