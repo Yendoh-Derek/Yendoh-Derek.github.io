@@ -68,7 +68,7 @@ function SocialIcon({ name, icon }: { name: string; icon: string }) {
 export function Footer() {
   return (
     <footer className="border-t border-border py-8">
-      <div className="section-container flex flex-col items-center justify-between gap-6 md:flex-row">
+      <div className="section-container flex flex-col items-center justify-between gap-6 md:flex-row md:items-start">
         <div className="flex flex-col items-center gap-2 md:items-start">
           <p className="text-sm text-secondary">
             © {new Date().getFullYear()} {site.name}.

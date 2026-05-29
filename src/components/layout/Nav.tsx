@@ -103,7 +103,7 @@ export function Nav() {
       )}
     >
       <nav
-        className="section-container flex h-full items-center justify-between pr-8 md:pr-12"
+        className="section-container flex h-full items-center justify-between"
         aria-label="Main navigation"
       >
         <a
