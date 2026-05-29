@@ -19,7 +19,7 @@ function AboutQuoteAndCtas({ className }: { className?: string }) {
       </Reveal>
 
       <Reveal delay={180}>
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div className="mt-8 hidden flex-wrap gap-3 md:flex">
           <a
             href={site.github}
             target="_blank"
