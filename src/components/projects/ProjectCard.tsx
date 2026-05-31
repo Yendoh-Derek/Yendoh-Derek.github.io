@@ -34,20 +34,24 @@ export function ProjectCard({ project, onExpand, className }: ProjectCardProps) 
           <DomainTag key={d} domain={d} />
         ))}
         {project.featured && (
-          <span className="rounded-badge border border-cyan/50 bg-elevated px-2.5 py-0.5 font-mono text-xs text-primary">
+          <span className="rounded-badge border border-cyan/40 bg-elevated px-2.5 py-0.5 font-mono text-xs text-cyan">
             Featured
           </span>
         )}
       </div>
 
-      <h3 className="mt-4 font-display text-lg font-bold leading-snug text-primary md:text-xl">
+      <h3 className="mt-4 font-display text-lg font-bold leading-snug text-tier-1 md:text-xl">
         {project.title}
       </h3>
 
-      <p className="mt-3 flex-1 text-secondary">{project.plainSummary}</p>
+      <p className="mt-3 flex-1 text-tier-2">{project.plainSummary}</p>
 
       {project.metrics && (
-        <p className="mt-4 font-mono text-base text-cyan">{project.metrics}</p>
+        <div className="mt-4 font-mono text-sm text-cyan">
+          <span className="rounded-badge border border-cyan/30 bg-cyan/5 px-3 py-1.5 text-xs">
+            {project.metrics}
+          </span>
+        </div>
       )}
 
       <div className="mt-5 flex flex-wrap gap-2">

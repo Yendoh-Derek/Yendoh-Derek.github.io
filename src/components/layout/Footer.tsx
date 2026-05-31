@@ -1,4 +1,6 @@
 import { site } from "@/content/site";
+import { skillsMarqueeItems } from "@/content/marquee";
+import { Marquee } from "@/components/marquee/Marquee";
 
 const socials = [
   {
@@ -67,8 +69,17 @@ function SocialIcon({ name, icon }: { name: string; icon: string }) {
 
 export function Footer() {
   return (
-    <footer className="border-t border-border py-8">
-      <div className="section-container flex flex-col items-center justify-between gap-6 md:flex-row md:items-start">
+    <footer className="border-t border-border">
+      {/* Skills marquee */}
+      <div className="border-b border-border py-8">
+        <div className="section-container">
+          <p className="mb-6 text-xs uppercase tracking-widest text-tier-3">Technologies & Tools</p>
+          <Marquee items={skillsMarqueeItems} speedSeconds={78} />
+        </div>
+      </div>
+
+      {/* Footer content */}
+      <div className="section-container flex flex-col items-center justify-between gap-6 py-8 md:flex-row md:items-start">
         <div className="flex flex-col items-center gap-2 md:items-start">
           <p className="text-sm text-secondary">
             © {new Date().getFullYear()} {site.name}.

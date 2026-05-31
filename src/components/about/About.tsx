@@ -11,7 +11,7 @@ function AboutQuoteAndCtas({ className }: { className?: string }) {
     <div className={className}>
       <Reveal delay={120}>
         <blockquote
-          className="border-l-2 border-cyan pl-6 font-display text-xl font-bold leading-snug text-primary md:text-2xl"
+          className="blockquote-decorated border-l-2 border-cyan pl-6 font-display font-bold leading-snug text-tier-1"
           style={{ fontSize: "clamp(20px, 3vw, 28px)" }}
         >
           &ldquo;{pullQuote}&rdquo;
@@ -60,7 +60,7 @@ export function About() {
           {/* Text — paragraphs only */}
           <div className="md:col-span-3">
             <Reveal>
-              <div className="space-y-6 text-secondary">
+              <div className="space-y-6 text-tier-2">
                 {aboutParagraphs.map((para, i) => (
                   <p key={i}>{para}</p>
                 ))}
