@@ -88,10 +88,10 @@ export function Nav() {
     const id = href.replace("#", "") as typeof activeSection;
     const isActive = activeSection === id;
     return cn(
-      "relative py-1 text-sm transition-opacity duration-200",
+      "nav-link relative py-1 text-sm transition-opacity duration-200",
       isActive
-        ? "text-primary opacity-100"
-        : "text-secondary opacity-60 hover:opacity-100",
+        ? "text-tier-1 opacity-100"
+        : "text-tier-3 opacity-70 hover:opacity-100",
     );
   };
 
@@ -112,7 +112,7 @@ export function Nav() {
             e.preventDefault();
             scrollToSection("hero");
           }}
-          className="font-display text-lg font-bold tracking-tight text-primary"
+          className="border border-white/20 px-2 py-1 font-display text-sm font-bold tracking-tight text-primary"
         >
           DY
         </a>
