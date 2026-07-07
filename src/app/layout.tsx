@@ -1,60 +1,7 @@
 import type { Metadata } from "next";
-import { DM_Sans, JetBrains_Mono, Syne } from "next/font/google";
-import { Nav } from "@/components/layout/Nav";
-import { Footer } from "@/components/layout/Footer";
-import { site } from "@/content/site";
-import "@/styles/globals.css";
-
-const syne = Syne({
-  subsets: ["latin"],
-  weight: ["700", "800"],
-  variable: "--font-syne",
-  display: "swap",
-});
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-dm-sans",
-  display: "swap",
-});
-
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-jetbrains",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
-  title: `${site.name} — ${site.title}`,
-  description: site.metaDescription,
-  metadataBase: new URL(site.url),
-  openGraph: {
-    title: `${site.name} — ${site.title}`,
-    description: site.metaDescription,
-    url: site.url,
-    siteName: site.name,
-    locale: "en_US",
-    type: "website",
-    images: [
-      {
-        url: "/og.svg",
-        width: 1200,
-        height: 630,
-        alt: `${site.name} — ${site.title} · HealthTech · EdTech`,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${site.name} — ${site.title}`,
-    description: site.metaDescription,
-    images: ["/og.svg"],
-  },
-  icons: {
-    icon: "/favicon.svg",
-  },
+  title: "Derek Yendoh - Portfolio",
 };
 
 export default function RootLayout({
@@ -63,15 +10,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${syne.variable} ${dmSans.variable} ${jetbrains.variable}`}
-    >
+    <html lang="en">
+      <head>
+        <meta httpEquiv="refresh" content="0; url=https://www.derekyendoh.dev/" />
+        <script dangerouslySetInnerHTML={{ __html: `window.location.href = "https://www.derekyendoh.dev/"` }} />
+      </head>
       <body>
-        <div className="grain-overlay" aria-hidden />
-        <Nav />
-        <main>{children}</main>
-        <Footer />
+        <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
+          <p>Redirecting to <a href="https://www.derekyendoh.dev/">https://www.derekyendoh.dev/</a>...</p>
+        </div>
+        <div style={{ display: 'none' }}>
+          {children}
+        </div>
       </body>
     </html>
   );
